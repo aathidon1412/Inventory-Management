@@ -1,0 +1,131 @@
+CREATE DATABASE InventoryDB;
+USE InventoryDB;
+CREATE TABLE Product (
+    ProductID INT PRIMARY KEY AUTO_INCREMENT,
+    ProductName VARCHAR(100),
+    Category VARCHAR(50),
+    Description TEXT,
+    Price DECIMAL(10,2),
+    StockQuantity INT,
+    SupplierID INT,
+    ReorderLevel INT,
+    DateAdded DATE
+);
+CREATE TABLE Supplier (
+    SupplierID INT PRIMARY KEY AUTO_INCREMENT,
+    SupplierName VARCHAR(100),
+    ContactPerson VARCHAR(100),
+    PhoneNumber VARCHAR(15),
+    Email VARCHAR(100),
+    Address TEXT
+);
+CREATE TABLE Customer (
+    CustomerID INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(100),
+    ContactNumber VARCHAR(15),
+    Email VARCHAR(100),
+    Address TEXT
+);
+CREATE TABLE Orders (
+    OrderID INT PRIMARY KEY AUTO_INCREMENT,
+    CustomerID INT,
+    ProductID INT,
+    Quantity INT,
+    TotalPrice DECIMAL(10,2),
+    OrderDate DATE,
+    PaymentMethod VARCHAR(50),
+    OrderStatus VARCHAR(50)
+);
+CREATE TABLE StockTransaction (
+    TransactionID INT PRIMARY KEY AUTO_INCREMENT,
+    ProductID INT,
+    Quantity INT,
+    TransactionType VARCHAR(50),
+    DateTime DATETIME
+);
+CREATE TABLE Employee (
+    EmployeeID INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(100),
+    Role VARCHAR(50),
+    ContactNumber VARCHAR(15),
+    Username VARCHAR(50),
+    Password VARCHAR(255)
+);
+
+INSERT INTO Product (ProductName, Category, Description, Price, StockQuantity, SupplierID, ReorderLevel, DateAdded)  
+VALUES 
+('Laptop', 'Electronics', 'Dell Inspiron 15', 55000, 10, 1, 3, '2025-03-10'),
+('Mobile', 'Electronics', 'Samsung Galaxy S23', 65000, 15, 2, 5, '2025-03-11'),
+('Tablet', 'Electronics', 'Apple iPad Air', 45000, 8, 3, 2, '2025-03-12'),
+('Smart Watch', 'Electronics', 'Apple Watch Series 8', 30000, 12, 4, 4, '2025-03-13'),
+('Headphones', 'Accessories', 'Sony WH-1000XM4', 18000, 20, 5, 5, '2025-03-14'),
+('Keyboard', 'Accessories', 'Mechanical Gaming Keyboard', 5000, 25, 6, 5, '2025-03-15'),
+('Mouse', 'Accessories', 'Logitech MX Master 3', 7000, 30, 6, 8, '2025-03-16'),
+('Printer', 'Office Equipment', 'HP LaserJet Pro', 25000, 5, 7, 2, '2025-03-17'),
+('Monitor', 'Electronics', 'Samsung 27-inch 4K UHD', 40000, 10, 8, 3, '2025-03-18'),
+('External Hard Drive', 'Storage', 'WD 2TB Portable HDD', 6000, 18, 9, 6, '2025-03-19');
+
+INSERT INTO Supplier (SupplierName, ContactPerson, PhoneNumber, Email, Address)  
+VALUES 
+('Dell Distributors', 'Mr. Raj', '9876543210', 'dellsup@gmail.com', 'Chennai, India'),
+('Samsung Suppliers', 'Ms. Priya', '8765432109', 'samsupplier@gmail.com', 'Bangalore, India'),
+('Apple Traders', 'Mr. Karthik', '9087654321', 'appletraders@gmail.com', 'Mumbai, India'),
+('Sony Electronics', 'Mr. Arjun', '9123456789', 'sonyindia@gmail.com', 'Hyderabad, India'),
+('HP Suppliers', 'Ms. Neha', '9234567890', 'hpsup@gmail.com', 'Delhi, India'),
+('Logitech Distributors', 'Mr. Sam', '9345678901', 'logitech@gmail.com', 'Kolkata, India'),
+('WD Storage Solutions', 'Ms. Aditi', '9456789012', 'wdhdd@gmail.com', 'Pune, India'),
+('Lenovo Suppliers', 'Mr. Ramesh', '9567890123', 'lenovosup@gmail.com', 'Ahmedabad, India'),
+('Canon Traders', 'Ms. Sneha', '9678901234', 'canonsup@gmail.com', 'Chennai, India'),
+('Asus Suppliers', 'Mr. Varun', '9789012345', 'asusdistributors@gmail.com', 'Bangalore, India');
+
+INSERT INTO Customer (Name, ContactNumber, Email, Address)  
+VALUES 
+('Amit Kumar', '9876543210', 'amitk@gmail.com', 'Delhi, India'),
+('Riya Sharma', '8765432109', 'riyas@gmail.com', 'Mumbai, India'),
+('Rajesh Verma', '7654321098', 'rajeshv@gmail.com', 'Bangalore, India'),
+('Pooja Gupta', '6543210987', 'poojag@gmail.com', 'Hyderabad, India'),
+('Anil Mehta', '5432109876', 'anilm@gmail.com', 'Chennai, India'),
+('Sonal Patil', '4321098765', 'sonalp@gmail.com', 'Pune, India'),
+('Rohit Singh', '3210987654', 'rohits@gmail.com', 'Kolkata, India'),
+('Sneha Kapoor', '2109876543', 'snehak@gmail.com', 'Ahmedabad, India'),
+('Vikas Yadav', '1098765432', 'vikasy@gmail.com', 'Jaipur, India'),
+('Neha Joshi', '9876543211', 'nehaj@gmail.com', 'Lucknow, India');
+
+INSERT INTO Orders (CustomerID, ProductID, Quantity, TotalPrice, OrderDate, PaymentMethod, OrderStatus)  
+VALUES 
+(1, 1, 1, 55000, '2025-03-20', 'Credit Card', 'Shipped'),
+(2, 3, 2, 90000, '2025-03-21', 'UPI', 'Pending'),
+(3, 2, 1, 65000, '2025-03-22', 'Cash', 'Delivered'),
+(4, 5, 3, 54000, '2025-03-23', 'Debit Card', 'Shipped'),
+(5, 6, 2, 10000, '2025-03-24', 'UPI', 'Processing'),
+(6, 8, 1, 25000, '2025-03-25', 'Credit Card', 'Delivered'),
+(7, 9, 4, 160000, '2025-03-26', 'UPI', 'Pending'),
+(8, 4, 1, 30000, '2025-03-27', 'Cash', 'Shipped'),
+(9, 7, 3, 21000, '2025-03-28', 'Debit Card', 'Processing'),
+(10, 10, 2, 12000, '2025-03-29', 'Credit Card', 'Delivered');
+
+INSERT INTO StockTransaction (ProductID, Quantity, TransactionType, DateTime)  
+VALUES 
+(1, 10, 'Purchase', '2025-03-10 10:00:00'),
+(2, 5, 'Purchase', '2025-03-11 11:30:00'),
+(3, 8, 'Sale', '2025-03-12 13:45:00'),
+(4, 3, 'Purchase', '2025-03-13 15:20:00'),
+(5, 4, 'Sale', '2025-03-14 16:50:00'),
+(6, 6, 'Purchase', '2025-03-15 17:15:00'),
+(7, 2, 'Sale', '2025-03-16 18:40:00'),
+(8, 1, 'Purchase', '2025-03-17 19:55:00'),
+(9, 3, 'Sale', '2025-03-18 20:30:00'),
+(10, 2, 'Purchase', '2025-03-19 21:45:00');
+
+INSERT INTO Employee (Name, Role, ContactNumber, Username, Password)  
+VALUES 
+('Rahul Sharma', 'Manager', '9876543210', 'rahul_admin', 'pass123'),
+('Priya Verma', 'Sales Executive', '8765432109', 'priya_sales', 'pass456'),
+('Amit Mehta', 'Inventory Manager', '7654321098', 'amit_inv', 'pass789'),
+('Sneha Gupta', 'Accountant', '6543210987', 'sneha_acc', 'pass101'),
+('Rakesh Yadav', 'Support Staff', '5432109876', 'rakesh_sup', 'pass202'),
+('Sonal Kapoor', 'Technician', '4321098765', 'sonal_tech', 'pass303'),
+('Vikram Joshi', 'Delivery Agent', '3210987654', 'vikram_del', 'pass404'),
+('Neha Singh', 'HR', '2109876543', 'neha_hr', 'pass505'),
+('Karan Patel', 'Security', '1098765432', 'karan_sec', 'pass606'),
+('Divya Nair', 'Admin', '9988776655', 'divya_admin', 'pass707');
