@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Transactions</title>
+    <script src="./javascript/stocktransactions.js" defer></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <h1>OptiStock Inventory Management System</h1>
+    <h2>Stock Transaction Management</h2>
+
+    <form id="transactionForm" onsubmit="saveTransaction(event)">
+        <label for="TransactionID">Transaction ID (Auto):</label>
+        <input type="text" id="TransactionID" readonly><br>
+
+        <label for="ProductID">Product ID:</label>
+        <input type="number" id="ProductID" required><br>
+
+        <label for="Quantity">Quantity:</label>
+        <input type="number" id="Quantity" required><br>
+
+        <label for="TransactionType">Transaction Type:</label>
+        <select id="TransactionType" required>
+            <option value="Purchase">Purchase</option>
+            <option value="Sale">Sale</option>
+            <option value="Return">Return</option>
+        </select><br>
+
+        <label for="DateTime">Date & Time:</label>
+        <input type="datetime-local" id="DateTime" required><br>
+
+        <button type="submit">Save Transaction</button>
+    </form>
+
+    <h3>Stock Transactions List</h3>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Transaction ID</th>
+                <th>Product ID</th>
+                <th>Quantity</th>
+                <th>Transaction Type</th>
+                <th>Date & Time</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="stockTransactionTableBody">
+            <!-- Transactions will be loaded here -->
+        </tbody>
+    </table>
+</body>
+</html>

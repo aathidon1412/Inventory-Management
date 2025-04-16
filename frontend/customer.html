@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Management</title>
+    <script defer src="./javascript/customer.js"></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <h1>OptiStock Inventory Management System</h1>
+    <h2>Customer Management</h2>
+
+    <!-- Customer Form -->
+    <form id="customerForm" onsubmit="saveCustomer(event)">
+        <input type="hidden" id="CustomerID">
+        
+        <label for="Name">Name:</label>
+        <input type="text" id="Name" required><br>
+
+        <label for="ContactNumber">Contact Number:</label>
+        <input type="text" id="ContactNumber" required><br>
+
+        <label for="Email">Email:</label>
+        <input type="email" id="Email" required><br>
+
+        <label for="Address">Address:</label>
+        <textarea id="Address" required></textarea><br>
+
+        <button type="submit" id="submitBtn">Save</button>
+    </form>
+
+    <!-- Customer Table -->
+    <h3>Customer List</h3>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Contact Number</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="customerTableBody"></tbody>
+    </table>
+</body>
+</html>

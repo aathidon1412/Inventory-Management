@@ -1,0 +1,67 @@
+body {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 20px;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+h2 {
+    text-align: center;
+}
+form {
+    background: white;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px gray;
+}
+label {
+    font-weight: bold;
+}
+input, select {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+}
+button {
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #218838;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+table, th, td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+}
+th {
+    background-color: #007bff;
+    color: white;
+}
+.edit-btn {
+    background-color: #ffc107;
+    color: black;
+    transition: background-color 0.3s ease;
+}
+.edit-btn:hover {
+    background-color: #e0a800; 
+    color: black;
+}
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+.delete-btn:hover {
+    background-color: #c82333;
+    color: white;
+}

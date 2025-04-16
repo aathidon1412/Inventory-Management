@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Management - Products</title>
+    <script src="./javascript/product.js"></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <h1>OptiStock Inventory Management System</h1>
+    <h2>Products Management</h2>
+
+    <form id="productForm">
+        <label for="ProductID">Product ID:</label>
+        <input type="text" id="ProductID" placeholder="Auto-generated for new products" readonly>
+
+        <label for="UpdatedProductID">New Product ID (Editable):</label>
+        <input type="text" id="UpdatedProductID" placeholder="Enter new Product ID if updating">
+
+        <label for="ProductName">Product Name:</label>
+        <input type="text" id="ProductName" required>
+
+        <label for="Category">Category:</label>
+        <input type="text" id="Category" required>
+
+        <label for="Description">Description:</label>
+        <input type="text" id="Description">
+
+        <label for="Price">Price:</label>
+        <input type="number" id="Price" step="0.01" required>
+
+        <label for="StockQuantity">Stock Quantity:</label>
+        <input type="number" id="StockQuantity" required>
+
+        <label for="SupplierID">Supplier ID:</label>
+        <input type="text" id="SupplierID" required>
+
+        <label for="ReorderLevel">Reorder Level:</label>
+        <input type="number" id="ReorderLevel" required>
+
+        <label for="DateAdded">Date Added:</label>
+        <input type="date" id="DateAdded" required>
+
+        <button type="submit" id="submitBtn" onclick="saveProduct(event)">Add Product</button>
+    </form>
+
+    <h2>Product List</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Product ID</th>
+                <th>Product Name</th>
+                <th>Category</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Stock Quantity</th>
+                <th>Supplier ID</th>
+                <th>Reorder Level</th>
+                <th>Date Added</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="productTableBody"></tbody>
+    </table>
+
+    
+</body>
+</html>
